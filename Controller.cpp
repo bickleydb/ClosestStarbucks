@@ -111,7 +111,7 @@ int main(){
      * TEST FOR SPEED
      * Do many searches, and compute the average time per search. -- This should take between
      * 5 and 50 seconds.
-     */
+     
     clock_t start = clock();
     int numTrials = 1000;
     for(int i=0; i<numTrials; i++){
@@ -168,7 +168,8 @@ int main(){
     Entry* testS = sS.getNearest(-86.295369,32.35012); //Should be the "Zelda Rd  Carter Hill Rd"
     optTotal += 0.0;
     studentTotal += distance(testS->x, testS->y,-86.295369,32.35012);
-                  
+     
+	/*
     testS = sS.getNearest(-79.5,43.7); //Should be the "Toronto Ontario" "Festival Hall" location
     optTotal += 1.5400761831996408;
     studentTotal += distance(testS->x, testS->y,-79.5,43.7);
@@ -176,7 +177,7 @@ int main(){
     testS = sS.getNearest(-86.75,36.0); //Should be the "Target Brentwood T-1983" location
     optTotal += 2.3306897598873859;
     studentTotal += distance(testS->x, testS->y,-86.75,36.0);
-    
+    */
     double error = studentTotal/optTotal;
     std::cout << "Error percentage is: " << 100.0*(error-1.0) << std::endl; //Note that 0.0 is the best error level
 

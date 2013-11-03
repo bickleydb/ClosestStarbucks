@@ -64,9 +64,8 @@ void BST<T>::remove(Entry e){
 //Return the item with Entry e. 
 // If there is no such item, throw an exception.
 template <class T>
-T BST<T>::find(Entry e){
-//return //find(k,root)-> data;
-  return e;
+Entry BST<T>::find(double xCoor, double yCoor){
+  return find(xCoor,yCoor,root,0)->info;
   }
 
 //Return true if there is an item with Entry e in the table. If not,
@@ -100,27 +99,23 @@ Entry BST<T>::next(Entry e){
 }
 
 template <class T>
-Node<T>* BST<T>::next(Entry e, Node<T>* r){
-  /*Node<T>* cur = root;
+Node<T>* BST<T>::next(double nextX, double nextY){
+  Node<T>* cur = root;
   Node<T>* best = root;
-  if (k > max(root)->k) {
-    return NULL;
-  }
-  while (cur != NULL) {
-    if (k < cur->k)
-	  cur = cur -> left;
-	else if (k > cur-> k)
-	  cur = cur-> right;
-	else if (k == cur->k) 
-	  return best;
-	 if (cur!= NULL && cur-> k < best-> k && cur->k > k)
-	    best = cur;
-  }
-  return best;
-  */
+  
 
   return new Node<T>();
 }
+
+double distance(double x1, double y1, double x2, double y2) {
+	  double dx = x1-x2;
+	  double dy = y1-y2;
+	  double toSqrt = pow (dx,2)+pow(dy,2);
+	  return pow(toSqrt,0.5);
+
+
+
+	}
 
 //If there is a key in the set that is < k
 // return the first such key. If not, return k
@@ -255,21 +250,35 @@ Node<T>* BST<T>::remove(Entry ent, Node<T>* r){
 }
 
 template <class T>
-Node<T>* BST<T>::find(Entry e, Node<T>* r){
-/*  Node<T>* cur = r;
+Node<T>* BST<T>::find(double findX, double findY, Node<T>* r, int rowNum){
+  Node<T>* cur = r;
+  if (rowNum % 2 == 0) {
+    if (r == NULL) {
+      return NULL;
+    }
+    if (cur->info.x == findX) {
+      return cur;
+    } else if (cur-> info.x > findX) {
+      cur = find(findX,findY,cur->left,rowNum++);
+    } else {
+      cur = find(findX,findY,cur-> right,rowNum++);
+    }
+  return cur;
+
+  } else {
   if (cur == NULL) {
     return NULL;
   }
-  if (cur->k == k) {
-    return cur;
-  } else if (cur-> k > k) {
-    cur = find(k,cur->left);
-  } else {
-    cur = find(k,cur-> right);
-  }
+  if (cur->info.y == findY) {
+      return cur;
+    } else if (cur-> info.y > findY) {
+      cur = find(findX,findY,cur->left,rowNum++);
+    } else {
+      cur = find(findX,findY,cur-> right,rowNum++);
+    }
+	return cur;
+	}
 
-  return cur;
-  */
   return NULL;
 }
 

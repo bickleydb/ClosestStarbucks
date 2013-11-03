@@ -30,7 +30,7 @@ class BST : public SSet <T> {
 
   //Return the item with Key k. 
   // If there is no such item, throw an exception.
-  virtual T find(Entry e);
+  virtual Entry find(double xCoor, double yCoor);
   //Return true if there is an item with Key k in the table. If not,
   // return false
   virtual bool entryExists(Entry e);
@@ -41,9 +41,11 @@ class BST : public SSet <T> {
   //If there is a key in the set that is < k,
   // return Entry first such key. If not, return k
   virtual Entry prev(Entry e);
+  virtual Node<T>* find(double findX, double findY, Node<T>* r, int rowNum);
 
-private:
   Node<T>* root;
+private:
+  
 
   virtual unsigned long size(Node<T>* r);
   //These are the recursive versions of each of your methods.
@@ -54,7 +56,8 @@ private:
 
   //This one returns the address of the found node, NULL
   // if not found
-  virtual Node<T>* find(Entry e, Node<T>* r);
+  
+  
 
   //Find the item in the sub-tree rooted at r which has the smallest key
   virtual Node<T>* min(Node<T>* r);
