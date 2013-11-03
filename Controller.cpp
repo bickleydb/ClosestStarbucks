@@ -7,13 +7,15 @@
  */
 #include <iostream>
 #include <fstream>
+#include <ctime>
 #include <cmath>
 
-#include "brinkmwjStarbucks.h"
+#include "bickledbStarbucks.h"
 
 #define PI 3.14159265
 //This code is based on http://www.movable-type.co.uk/scripts/latlong.html
-double distance(Entry& e1, Entry& e2){
+
+  double distance(Entry& e1, Entry& e2){
   double R = 6371; // radius of earth, in km
   double dLat = (e2.y-e1.y)*PI/180;
   double dLon = (e2.x-e1.x)*PI/180;
@@ -81,8 +83,7 @@ void readEntryList(Entry** entryList, int* n){
 }
 
 int main(){
-  {
-    brinkmwjStarbucks sS;
+    bickledbStarbucks sS;
 
     int n;
     Entry* entryList;
@@ -124,9 +125,9 @@ int main(){
       start = clock();
       numTrials = 10000;
       for(int i=0; i<numTrials; i++){
-	double x = ((double)rand())/RAND_MAX;
-	double y = ((double)rand())/RAND_MAX;
-	Entry* tmp = sS.getNearest(x, y);
+        double x = ((double)rand())/RAND_MAX;
+        double y = ((double)rand())/RAND_MAX;
+        Entry* tmp = sS.getNearest(x, y);
       }
       end = clock();
     }
@@ -135,9 +136,9 @@ int main(){
       start = clock();
       numTrials = 100000;
       for(int i=0; i<numTrials; i++){
-	double x = ((double)rand())/RAND_MAX;
-	double y = ((double)rand())/RAND_MAX;
-	Entry* tmp = sS.getNearest(x, y);
+        double x = ((double)rand())/RAND_MAX;
+        double y = ((double)rand())/RAND_MAX;
+        Entry* tmp = sS.getNearest(x, y);
       }
       end = clock();
     }
@@ -146,16 +147,16 @@ int main(){
       start = clock();
       numTrials = 1000000;
       for(int i=0; i<numTrials; i++){
-	double x = ((double)rand())/RAND_MAX;
-	double y = ((double)rand())/RAND_MAX;
-	Entry* tmp = sS.getNearest(x, y);
+        double x = ((double)rand())/RAND_MAX;
+        double y = ((double)rand())/RAND_MAX;
+        Entry* tmp = sS.getNearest(x, y);
       }
       end = clock();
     }
 
     std::cout << "Time: " << ((1000.0*(end - start)/CLOCKS_PER_SEC)/numTrials) << " ms per search, " <<numTrials << " trials" << std::endl;
-		
-		
+                
+                
     /* 
      * TEST FOR ACCURACY
      * I used Excel to double-check these answers
@@ -167,11 +168,11 @@ int main(){
     Entry* testS = sS.getNearest(-86.295369,32.35012); //Should be the "Zelda Rd  Carter Hill Rd"
     optTotal += 0.0;
     studentTotal += distance(testS->x, testS->y,-86.295369,32.35012);
-  		
+                  
     testS = sS.getNearest(-79.5,43.7); //Should be the "Toronto Ontario" "Festival Hall" location
     optTotal += 1.5400761831996408;
     studentTotal += distance(testS->x, testS->y,-79.5,43.7);
-		
+                
     testS = sS.getNearest(-86.75,36.0); //Should be the "Target Brentwood T-1983" location
     optTotal += 2.3306897598873859;
     studentTotal += distance(testS->x, testS->y,-86.75,36.0);
@@ -179,7 +180,7 @@ int main(){
     double error = studentTotal/optTotal;
     std::cout << "Error percentage is: " << 100.0*(error-1.0) << std::endl; //Note that 0.0 is the best error level
 
-  }
+  
 
   return 0;
-}
+  }
