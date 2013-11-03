@@ -5,9 +5,12 @@
 
 
 	void bickledbStarbucks::build(Entry* c, int n) {
+
 	  for (int i = 0; i < n; i++) {
-	    Entry a = c[i];
+	    tree.add(c[i]);
 		}
+		std::cout<<tree.size()<<std::endl;
+		std::cout<<n<<std::endl;
 	}
 
 

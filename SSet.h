@@ -11,7 +11,7 @@ class SSet {
 
   //Add a new item, x, with Key k.
   // If an item with Key k already exists, overwrite it
-  virtual void add(Entry e, T x) = 0;
+  virtual void add(Entry e) = 0;
 
   //Remove the item with Key k. If there is no such item, do nothing.
   virtual void remove(Entry e) = 0;

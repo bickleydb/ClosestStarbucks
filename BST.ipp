@@ -17,14 +17,14 @@ BST<T>::~BST(){
 
 template <class T>
 void keysInOrder(Node<T>* r) {
- /* if (r == NULL)
+ if (r == NULL)
     return;
 else {
   keysInOrder(r->left);
-  std::cout<<r->k<<" ";
+  std::cout<<r->info.city<<std::endl;
   keysInOrder(r->right);
-  */
-  //}
+	}
+  
 
 
 
@@ -33,9 +33,7 @@ else {
 //Return the number of items currently in the SSet
 template <class T>
 unsigned long BST<T>::size(){
-  keysInOrder(root);
-  std::cout<<"END";
-  return NULL;
+  return size(root);
 }
 
 template <class T>
@@ -52,8 +50,8 @@ unsigned long BST<T>::size(Node<T>* r) {
 //Add a new item, x, with Entry e.
 // If an item with Entry e already exists, overwrite it
 template <class T>
-void BST<T>::add(Entry e, T x){
-  root=add(x,root,0);
+void BST<T>::add(Entry e){
+  root=add(e,root,0);
 }
 
 //Remove the item with Entry e. If there is no such item, do nothing.

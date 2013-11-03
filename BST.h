@@ -23,7 +23,7 @@ class BST : public SSet <T> {
 
   //Add a new item, x, with Key k.
   // If an item with Key k already exists, overwrite it
-  virtual void add(Entry e, T x);
+  virtual void add(Entry e);
 
   //Remove the item with Key k. If there is no such item, do nothing.
   virtual void remove(Entry e);
