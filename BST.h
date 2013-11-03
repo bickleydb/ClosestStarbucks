@@ -4,17 +4,16 @@
 
 #include "SSet.h"
 
-template <class Key, class T>
+template <class T>
 class Node {
 public:
-  Key k;
-  T data;
+  T info;
   Node* left;
   Node* right;
 };
 
-template <class Key, class T>
-class BST : public SSet <Key,T> {
+template <class T>
+class BST : public SSet <T> {
  public:
   BST();
   ~BST();
@@ -24,48 +23,48 @@ class BST : public SSet <Key,T> {
 
   //Add a new item, x, with Key k.
   // If an item with Key k already exists, overwrite it
-  virtual void add(Key k, T x);
+  virtual void add(Entry e, T x);
 
   //Remove the item with Key k. If there is no such item, do nothing.
-  virtual void remove(Key k);
+  virtual void remove(Entry e);
 
   //Return the item with Key k. 
   // If there is no such item, throw an exception.
-  virtual T find(Key k);
+  virtual T find(Entry e);
   //Return true if there is an item with Key k in the table. If not,
   // return false
-  virtual bool keyExists(Key k);
+  virtual bool entryExists(Entry e);
 
   //If there is a key in the set that is > k,
   // return the first such key. If not, return k
-  virtual Key next(Key k);
+  virtual Entry next(Entry e);
   //If there is a key in the set that is < k,
-  // return the first such key. If not, return k
-  virtual Key prev(Key k);
+  // return Entry first such key. If not, return k
+  virtual Entry prev(Entry e);
 
 private:
-  Node<Key,T>* root;
+  Node<T>* root;
 
-  virtual unsigned long size(Node<Key,T>* r);
+  virtual unsigned long size(Node<T>* r);
   //These are the recursive versions of each of your methods.
   // You should return the address of the new root node, whether
   // or not the root node changes.
-  virtual Node<Key,T>* add(Key k, T x, Node<Key,T>* r);
-  virtual Node<Key,T>* remove(Key k, Node<Key,T>* r);
+  virtual Node<T>* add(T x, Node<T>* r, int rowNum);
+  virtual Node<T>* remove(Entry e, Node<T>* r);
 
   //This one returns the address of the found node, NULL
   // if not found
-  virtual Node<Key,T>* find(Key k, Node<Key,T>* r);
+  virtual Node<T>* find(Entry e, Node<T>* r);
 
   //Find the item in the sub-tree rooted at r which has the smallest key
-  virtual Node<Key,T>* min(Node<Key,T>* r);
+  virtual Node<T>* min(Node<T>* r);
 
   //Find the item in the sub-tree rooted at r which has the largest key
-  virtual Node<Key,T>* max(Node<Key,T>* r);
+  virtual Node<T>* max(Node<T>* r);
 
   //Find the next/prev node, and return its address
-  virtual Node<Key,T>* next(Key k, Node<Key,T>* r);
-  virtual Node<Key,T>* prev(Key k, Node<Key,T>* r);
+  virtual Node<T>* next(Entry e, Node<T>* r);
+  virtual Node<T>* prev(Entry e, Node<T>* r);
 
 };
 
