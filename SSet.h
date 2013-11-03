@@ -26,7 +26,7 @@ class SSet {
 
   //If there is a key in the set that is > k,
   // return the first such key. If not, return k
-  virtual Entry next(Entry e) = 0;
+  virtual Entry next(double nextX, double nextY) = 0;
   //If there is a key in the set that is < k,
   // return the first such key. If not, return k
   virtual Entry prev(Entry e) = 0;

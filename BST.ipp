@@ -88,34 +88,43 @@ bool BST<T>::entryExists(Entry e){
 //If there is a key in the set that is > k,
 // return the first such key. If not, return k
 template <class T>
-Entry BST<T>::next(Entry e){
-/*  Node<T>* rtn = next(k,root);
-  if (rtn == NULL) 
-   return k;
-  return rtn->k;
-  */
- 
- return e;
+Entry BST<T>::next(double nextX, double nextY){
+  return next(nextX,nextY,root,root,0)->info;
+
 }
 
 template <class T>
-Node<T>* BST<T>::next(double nextX, double nextY){
-  Node<T>* cur = root;
-  Node<T>* best = root;
+Node<T>* BST<T>::next(double nextX, double nextY, Node<T>* r, Node<T>* best,int rowNum){
+  if (rowNum %2 == 0) {
+  if (r == NULL)
+	  return best;
+    if (nextX > r->info.x && distance(nextX,nextY,r->info.x,r->info.y) < distance(nextX,nextY,best->info.x,best->info.y)) 
+		best = r;
+	
+    if (nextX < r->info.x)
+	  return next(nextX,nextY,r->left,best,rowNum++);
+    else if (nextX > r->info.x) {
+	  return next(nextX,nextY,r->right,best,rowNum++);
+  } else {
+  if (r == NULL)
+    return best;
+  if (nextX > r->info.x && distance(nextX,nextY,r->info.x,r->info.y) < distance(nextX,nextY,best->info.x,best->info.y)) 
+		best = r;
+  
+   if (nextY < r->info.y)
+	  return next(nextX,nextY,r->left,best,rowNum++);
+    else if (nextY > r->info.y) {
+	  return next(nextX,nextY,r->right,best,rowNum++);
+  }
+
+  }
+  
+  }
+  
+  }
   
 
-  return new Node<T>();
-}
 
-double distance(double x1, double y1, double x2, double y2) {
-	  double dx = x1-x2;
-	  double dy = y1-y2;
-	  double toSqrt = pow (dx,2)+pow(dy,2);
-	  return pow(toSqrt,0.5);
-
-
-
-	}
 
 //If there is a key in the set that is < k
 // return the first such key. If not, return k
@@ -204,8 +213,7 @@ Node<T>* BST<T>::add(T ent, Node<T>* r, int rowNum){
      else if(ent.y > r->info.y) {
      r->right = add(ent,r->right,rowNum++);
 	  return r;
-    }
-  return r;
+    } return r;
   }
 
 }

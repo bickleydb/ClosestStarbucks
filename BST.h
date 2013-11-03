@@ -37,7 +37,7 @@ class BST : public SSet <T> {
 
   //If there is a key in the set that is > k,
   // return the first such key. If not, return k
-  virtual Entry next(Entry e);
+  virtual Entry next(double nextX,double nextY);
   //If there is a key in the set that is < k,
   // return Entry first such key. If not, return k
   virtual Entry prev(Entry e);
@@ -66,7 +66,7 @@ private:
   virtual Node<T>* max(Node<T>* r);
 
   //Find the next/prev node, and return its address
-  virtual Node<T>* next(Entry e, Node<T>* r);
+  virtual Node<T>* next(double nextX, double nextY, Node<T>* r, Node<T>* best,int rowNum);
   virtual Node<T>* prev(Entry e, Node<T>* r);
 
 };

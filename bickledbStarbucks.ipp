@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 	BST<Entry> tree;
 
@@ -15,19 +16,13 @@
 
 
     Entry* bickledbStarbucks::getNearest(double x, double y) {
-		std::cout<<tree.find(-86.295369,32.35012).address<<std::endl;
-		std::cout<<tree.find(-79.608705,43.699195).address<<std::endl;
-		std::cout<<tree.find(-79.617586,43.696273).address<<std::endl;
-		std::cout<<tree.find(-79.617586,43.696273).address<<std::endl;
-		std::cout<<tree.find(-76.481867,37.125912).city<<std::endl;
-		//std::cout<<tree.find(-86.295369,32.35012).address<<std::endl;
-		//std::cout<<tree.find(-86.295369,32.35012).address<<std::endl;
-		//std::cout<<tree.find(-86.295369,32.35012).address<<std::endl;
-//std::cout<<tree.find(-86.295369,32.35012).city<<std::endl;
-	//	std::cout<<tree.find(-86.295369,32.35012).address<<std::endl;
+		std::cout<<tree.next(-81.92550,41.45991).address<<std::endl;
 
 
 		return NULL;
 
 	}
+
+
+	
 
